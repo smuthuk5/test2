@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hedge Trimmer - PSM HT — Pulse Service Masters</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .product-page{max-width:1100px;margin:20px auto;padding:20px}
+    .prod-main{display:flex;gap:24px;align-items:flex-start}
+    .prod-main img{width:420px;max-width:40%;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+    .prod-info{flex:1;text-align:left}
+    .price-box{background:#fff;padding:14px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);margin-top:12px}
+    .buy-btn{display:inline-block;padding:10px 16px;border-radius:8px;background:#00796b;color:white;text-decoration:none;font-weight:700}
+    .specs{margin-top:12px}
+    .specs table{width:100%;border-collapse:collapse}
+    .specs td{padding:6px 8px;border-bottom:1px solid #eee}
+  </style>
+</head>
+<body>
+  <main class="product-page">
+    <div class="prod-main">
+      <picture><source srcset="images/Hedge_Trimmer_-_PSM_HT.webp" type="image/webp"><img src="images/Hedge_Trimmer_-_PSM_HT.jpg" alt="Hedge Trimmer - PSM HT" /></picture>
+      <div class="prod-info">
+        <h1>Hedge Trimmer - PSM HT</h1>
+        <div><strong>Model Number:</strong> PSM-HT32</div>
+        <p style="margin-top:10px">Ideal for professional landscapers and gardeners. Compact yet powerful for tough trimming jobs. Reduces fatigue with low-vibration design.</p>
+        <div class='specs'><h4>Specifications</h4><table><tr><td><strong>Model Number</strong></td><td>PSM-HT32</td></tr><tr><td><strong>Engine Displacement</strong></td><td>32 CC</td></tr><tr><td><strong>Engine Type</strong></td><td>2 strokes, Air cooled</td></tr><tr><td><strong>Speed</strong></td><td>7000-8200 RPM</td></tr><tr><td><strong>Fuel Type</strong></td><td>Petrol and Oil mix (1:40)</td></tr><tr><td><strong>Fuel tank capacity</strong></td><td>230 ml</td></tr><tr><td><strong>Carburetor type</strong></td><td>Suction type</td></tr><tr><td><strong>Blade</strong></td><td>Double</td></tr><tr><td><strong>Cutting length</strong></td><td>560 mm</td></tr><tr><td><strong>Gear Ratio</strong></td><td>14:58</td></tr></table></div>
+        <div class='benefits'><h4>Benefits</h4><ul><li>Ideal for professionals</li><li>Compact and powerful</li><li>Low-vibration design</li><li>Delivers clean and even cuts</li></ul></div>
+        <div class="price-box">
+          <div id="priceLabel">Price (without warranty): ₹</div>
+          <div style="font-size:22px;font-weight:800">₹<span id="priceValue">16,000</span></div>
+          <div style="margin-top:10px">
+            <label><input type="checkbox" id="warrantyCheckbox" data-base="16000" data-addon="6400"> Add extended warranty (₹6,400)</label>
+          </div>
+          <div style="margin-top:12px">
+            <a class="buy-btn" href="contact.html">Buy now</a>
+            <a class="back-link" href="products.html">← Back to products</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<!-- PRODUCT PAGE WARRANTY SCRIPT -->
+<script>
+function updatePriceDisplay() {
+  var priceEl = document.getElementById('priceValue');
+  var labelEl = document.getElementById('priceLabel');
+  var cb = document.getElementById('warrantyCheckbox');
+  if(!priceEl || !cb) return;
+  var base = parseInt(cb.dataset.base || 16000, 10);
+  var addon = Math.round(base * 0.4); // 40%
+  if(cb.checked){
+    priceEl.textContent = (base + addon).toLocaleString('en-IN');
+    labelEl.textContent = 'Price (with warranty): ₹';
+  } else {
+    priceEl.textContent = base.toLocaleString('en-IN');
+    labelEl.textContent = 'Price (without warranty): ₹';
+  }
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var cb = document.getElementById('warrantyCheckbox');
+  if(cb){
+    // normalize dataset to integers
+    if(!cb.dataset.base) cb.dataset.base = '16000';
+    cb.addEventListener('change', updatePriceDisplay);
+    updatePriceDisplay();
+  }
+});
+</script>
+<!-- END PRODUCT PAGE WARRANTY SCRIPT -->
+
+</body>
+</html>

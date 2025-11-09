@@ -1,0 +1,271 @@
+/* =========================
+   main.css for Pulse Service Masters
+   Updated: Teal theme + full image carousel
+   ========================= */
+
+/* Base layout */
+body {
+  background:#f0f6f8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin:0;
+  color:#222;
+}
+.container { max-width:1100px; margin:0 auto; padding:20px; }
+
+/* Header */
+.site-header { background:#00796b; color:white; padding:12px 0; }
+.header-flex { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.brand { display:flex; align-items:center; gap:12px; }
+.brand img { height:64px; }
+.brand-title .title { font-weight:700; color:white; font-size:20px; }
+.brand-title .subtitle { font-size:12px; color:rgba(255,255,255,0.95); }
+.main-nav .nav-list { display:flex; gap:16px; list-style:none; margin:0; padding:0; align-items:center; }
+.main-nav a { color:white; padding:8px 12px; border-radius:6px; text-decoration:none; transition: background 0.2s; }
+.main-nav a:hover { background:rgba(255,255,255,0.12); }
+
+/* Hero */
+.hero { padding:16px 0; }
+.headline { font-size:22px; font-weight:600; margin:6px 0; color:#004d40; }
+.sub { color:#555; margin-bottom:16px; }
+
+/* Services grid */
+.services {
+  display:grid;
+  gap:20px;
+  grid-template-columns: repeat(3, 1fr);
+  padding:10px 0;
+  margin-bottom:18px;
+}
+.service {
+  background:#fff8e1;
+  border:1px solid #e0c97f;
+  border-left:6px solid #ff9800;
+  border-radius:10px;
+  padding:18px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  min-height:110px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.service:hover {
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+  border-color:#f57c00;
+}
+.service-item { margin-bottom:8px; }
+.service-item h4 { margin:0; font-size:16px; color:#c47a00; font-weight:700; }
+.service p { margin:0; color:#4e4e4e; line-height:1.45; font-size:14px; }
+
+/* Responsive for services */
+@media (max-width:1000px) { .services { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px) { .services { grid-template-columns:repeat(1,1fr); } .brand img { height:56px; } }
+
+/* ================================
+   Carousel — teal accent + full image display
+   ================================ */
+:root {
+  --psm-accent: #00796b; /* teal */
+  --psm-accent-dark: #005b4f;
+  --psm-accent-tint: #e6f6f4;
+  --psm-contrast: #0b5345;
+}
+
+.carousel-wrap { position: relative; margin-top:20px; }
+.carousel {
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--psm-accent-tint);
+  border: 2px solid rgba(0,121,107,0.15);
+  box-shadow: 0 6px 18px rgba(6,30,26,0.06);
+}
+.track { display:flex; transition: transform 900ms ease; will-change: transform; }
+.slide {
+  min-width:100%;
+  box-sizing:border-box;
+  padding:18px 20px;
+  display:flex;
+  gap:24px;
+  align-items:center;
+}
+
+/* Product image container */
+.prod-img {
+  flex: 0 0 360px;
+  height: 240px;
+  background: #f7fbfb;
+  border: 2px solid rgba(0,121,107,0.12);
+  border-radius: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  padding:8px;
+}
+.prod-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display:block;
+  background: transparent;
+}
+
+/* Product text */
+.prod-info { flex:1; }
+.prod-info h3 { margin:0 0 8px 0; font-size:22px; color: var(--psm-accent-dark); }
+.prod-info p { margin:0; color:#444; line-height:1.45; font-size:15px; }
+
+/* Controls */
+.carousel-prev, .carousel-next, #pause-btn {
+  pointer-events: all;
+  padding:8px 14px;
+  border-radius:6px;
+  border:none;
+  background: var(--psm-accent);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  margin:0 6px;
+  transition: background .18s ease, transform .12s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.carousel-prev:hover, .carousel-next:hover, #pause-btn:hover {
+  background: var(--psm-accent-dark);
+  transform: translateY(-2px);
+}
+
+.center { text-align:center; }
+
+/* Mobile tweaks */
+@media (max-width: 800px) {
+  .prod-img { flex: 0 0 260px; height:180px; }
+  .prod-info h3 { font-size:20px; }
+}
+@media (max-width: 600px) {
+  .prod-img { flex: 0 0 180px; height:140px; }
+  .slide { flex-direction: column; align-items:flex-start; gap:12px; }
+  .prod-info h3 { font-size:18px; }
+}
+
+
+/* =========== MERGED: Restored product/contact specific rules from original project (Option A) =========== */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin: 15px;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.price-box {
+  margin: 10px 0;
+}
+
+.product-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;padding:8px;}
+
+.product-card{padding:10px;border-radius:10px}
+
+.product-card img{width:100%;height:auto;max-height:160px;object-fit:cover}
+
+.product-card h3{font-size:16px;margin:8px 0}
+
+.price-box{font-size:14px;padding:8px}
+
+.product-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+
+.prod-main{flex-direction:column;padding:12px}
+
+.prod-main img{width:100%;max-width:100%}
+
+.prod-info{padding:8px}
+
+.buy-btn{width:100%;display:block;text-align:center}
+
+/* AUTO-FIX: center product grid and improve card sizing */
+.product-grid{max-width:1100px;margin:18px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:0 12px}
+
+.product-card{display:flex;flex-direction:column;align-items:stretch}
+
+.product-card .prod-img{align-self:stretch}
+
+/* Make carousel slides reliably visible and centered */
+.carousel-wrap{max-width:1100px;margin:12px auto;padding:0 12px}
+
+.carousel{overflow:hidden;position:relative}
+
+.track{display:flex;gap:12px;align-items:stretch;transition:transform 400ms ease}
+
+.slide{min-width:260px;flex:0 0 auto;display:flex;align-items:stretch}
+
+@media (max-width:600px){
+  .slide{min-width:200px}
+
+/* Improve product-grid centering and card layout (reinforce previous tweak) */
+.product-grid{max-width:1100px;margin:18px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:0 12px}
+
+.product-card{display:flex;flex-direction:column;align-items:stretch;min-height:220px}
+
+.product-card .prod-img{align-self:stretch}
+
+.product-card .prod-info{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+
+.product-card .prod-info p{margin:0 0 8px}
+
+.buy-btn{align-self:flex-start}
+
+/* Ensure carousel buttons are accessible and visible on small screens */
+.carousel-prev, .carousel-next, #pause-btn {position:relative;z-index:3}
+
+@media (max-width:480px){
+  .carousel-prev, .carousel-next {padding:8px}
+
+/* =========== User request: Show one carousel product at a time =========== */
+/* Force each slide to occupy full carousel viewport so only one appears */
+.carousel { max-width:1100px; margin:12px auto; }
+.carousel .track { gap: 0 !important; }
+.carousel .slide { min-width: 100% !important; flex: 0 0 100% !important; display:flex; align-items:stretch; }
+
+/* Ensure images inside slide scale and center */
+.slide .product-card { width:100%; display:flex; align-items:stretch; }
+.slide .prod-img img, .product-card .prod-img img { width:100%; height:auto; object-fit:cover; display:block; }
+
+/* =========== Header / Logo alignment fixes for product pages =========== */
+.site-header { display:flex; align-items:center; justify-content:center; padding:14px 12px; }
+.site-header .container.header-flex { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:1100px; margin:0 auto; padding:0 12px; }
+.brand { display:flex; align-items:center; gap:12px; }
+.brand img { height:64px; width:auto; max-height:64px; display:block; }
+.site-nav { display:flex; gap:14px; align-items:center; }
+.site-nav a { color:inherit; text-decoration:none; padding:8px 10px; border-radius:6px; }
+.site-nav a:hover, .site-nav a.active { background: rgba(11,95,255,0.08); color:#0b5fff; }
+
+/* Product page specific tweaks to align logo and info */
+.prod-header { display:flex; align-items:center; gap:18px; max-width:1100px; margin:18px auto; padding:0 12px; }
+.prod-header .brand img { height:56px; max-height:56px; }
+.prod-header .prod-title { font-size:20px; font-weight:600; }
+
+@media (max-width:600px){
+  .brand img { height:48px; }
+  .prod-header { flex-direction:column; align-items:flex-start; gap:8px; }
+}

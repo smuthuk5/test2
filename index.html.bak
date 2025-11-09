@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pulse Service Masters — Lawn mowers & Garden Equipment</title>
+  <style>
+    /* Basic page layout */
+    body{background:#f0f6f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#222}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+
+    /* Logo area (keeps existing look) */
+    .brand{display:flex;align-items:center;gap:16px;padding:12px 0;align-items:center}
+    .brand div{line-height:1}
+    .brand img{height:64px}
+
+    /* Service description */
+    .hero{padding:12px 0}
+    .headline{font-size:20px;margin:6px 0}
+    .sub{color:#555;margin-bottom:12px}
+
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .service{background:#ffffff;border-radius:8px;padding:12px;box-shadow:0 2px 6px rgba(0,0,0,0.06);border:1px solid #e6eef3}
+    .service h4{margin:0 0 6px 0;font-size:15px}
+    .service p{margin:0;color:#444;font-size:14px}
+
+    /* Carousel (one product visible at a time, scrolls right-to-left) */
+    .carousel-wrap{position:relative;margin-top:20px}
+    .carousel{overflow:hidden;border-radius:10px;background:#ffffff;border:1px solid #e6eef3}
+    .track{display:flex;transition:transform 600ms ease;will-change:transform}
+    .slide{min-width:100%;box-sizing:border-box;padding:18px;display:flex;gap:18px;align-items:center}
+    .prod-img{flex:0 0 260px;height:180px;background:#ddd;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .prod-img img{max-width:100%;height:100%;object-fit:cover}
+    .prod-info{flex:1}
+    .prod-info h3{margin:0 0 8px 0;font-size:20px}
+    .prod-info p{margin:0 0 8px 0;color:#444}
+    .price{font-weight:700;margin-bottom:8px}
+    .warranty-toggle{display:flex;gap:8px}
+    .warranty-toggle button{padding:8px 12px;border-radius:6px;border:1px solid #ccc;background:#fff;cursor:pointer}
+    .controls{position:absolute;left:12px;right:12px;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;pointer-events:none}
+    .controls button{pointer-events:all;padding:8px 10px;border-radius:6px;border:none;background:rgba(255,255,255,0.9);box-shadow:0 1px 5px rgba(0,0,0,0.12);cursor:pointer}
+    .indicators{display:flex;gap:6px;justify-content:center;margin-top:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#ddd}
+    .dot.active{background:#333}
+
+    /* Small screens adjustments */
+    @media (max-width:600px){
+      .prod-img{height:140px;flex:0 0 140px}
+      .prod-info h3{font-size:18px}
+    }
+  
+/* --- PSM1 color and homepage tweaks injected by assistant --- */
+.site-header, header, .nav, .navbar { background: #00796b !important; color: white !important; }
+footer { background: #004d40 !important; color: white !important; }
+.price, .price * { display: none !important; }
+/* ensure product links open products.html anchors if using relative paths */
+a.product-link[href^="#"] { /* nothing */ }
+
+
+/* Header layout: logo left, nav right */
+.header-flex{display:flex;align-items:center;justify-content:space-between;padding:8px 0;}
+.main-nav .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center;}
+.main-nav a{display:inline-block;padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:600;}
+/* menu background and text color (different from header) */
+.main-nav{background:transparent;padding:6px;border-radius:8px;}
+.main-nav a{background:#ffffffaa;color:#00796b;} /* white translucent background with psm green text */
+.main-nav a:hover{background:#e7f6f2;color:#004d40;}
+
+/* Ensure nav is on the same line as logo on small screens */
+@media (max-width:700px){ .header-flex{flex-direction:column;gap:10px} .main-nav .nav-list{flex-wrap:wrap;justify-content:center} }
+
+/* Different background colors for content blocks */
+.tagline-block{background:#e8f5e9;padding:18px;border-radius:8px;margin-bottom:12px;} /* light green */
+.lead-block{background:#e3f2fd;padding:16px;border-radius:8px;margin-bottom:12px;} /* light blue */
+.services .service-item{background:#fff3e0;padding:12px;border-radius:8px;margin:8px 0;} /* light orange */
+.services{padding:12px;border-radius:8px;margin-bottom:18px;}
+/* keep products scroller styling */
+.products-wrap{margin-top:8px;padding:10px;background:linear-gradient(90deg,#fff,#fbfbfb);border-radius:8px}
+.product{border:none;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+
+/* Ensure logo small on mobile */
+.brand img{height:56px}
+
+
+/* Alignment overrides injected */
+.header-flex{display:flex;align-items:center;justify-content:space-between;}
+.main-nav{margin-left:auto;}
+.brand img{height:64px;}
+.site-header{background:#00796b;padding:12px 0;color:white;}
+.main-nav a{color:white;padding:8px 12px;border-radius:6px;text-decoration:none;background:transparent;}
+.main-nav a:hover{background:rgba(255,255,255,0.12);}
+.brand-title .title{color:white;}
+
+
+/* Ensure logo and title visible and aligned */
+.header-flex{display:flex;align-items:center;justify-content:space-between;}
+.brand img{height:64px;max-height:72px;}
+.site-header{background:#00796b;padding:12px 0;color:white;}
+.main-nav a{color:white;padding:8px 12px;border-radius:6px;text-decoration:none;background:transparent;}
+.main-nav a:hover{background:rgba(255,255,255,0.12);}
+.brand-title .title{color:white;}
+.brand-title .subtitle{color:rgba(255,255,255,0.9);font-size:12px;}
+@media (max-width:700px){ .header-flex{flex-direction:column;align-items:flex-start;gap:8px;} .main-nav .nav-list{justify-content:flex-end} }
+
+</style>
+</head>
+<body>
+
+
+
+<header class="site-header" role="banner">
+  <div class="container header-flex" style="gap:12px;">
+    <div class="brand" style="display:flex;align-items:center;gap:12px;">
+      <a href="index.html" style="display:flex;align-items:center;">
+        <img src="images/logo.png" alt="Pulse Service Masters logo" style="height:64px;display:block;margin-right:10px;">
+      </a>
+      <div class="brand-title" style="line-height:1;">
+        <div class="title" style="font-weight:700;color:white;font-size:20px;">Pulse Service Masters</div>
+        <div class="subtitle" style="font-size:12px;color:rgba(255,255,255,0.9);margin-top:2px;">Sales • Servicing • Spare Parts</div>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul class="nav-list" style="display:flex;gap:16px;list-style:none;margin:0;padding:0;align-items:center;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+  <div class="container">
+    <!-- Brand / logo area (keep as-is) -->
+    
+        <div style="font-size:13px;color:#666">Sales • Servicing • Spare Parts • Genuine Support</div>
+      </div>
+    </div>
+
+    <!-- Updated hero/description -->
+    <section class="hero">
+      <div class="headline">Your Trusted Partner for Lawn &amp; Garden Equipment</div>
+      <div class="sub">We offer high-quality tools for your garden — sales, service &amp; support. Below are the core services we provide to keep your outdoor equipment running like new.</div>
+
+      <div class="services">
+        <div class="service">
+          <div class="service-item"><h4>Sales of New &amp; Refurbished Equipment</h4></div>
+          <p>Wide range of lawn mowers, trimmers, brushcutters and chainsaws — from lightweight cordless models to professional petrol machines. We offer both new and carefully refurbished options to suit every budget.</p>
+        </div>
+        <div class="service">
+          <div class="service-item"><h4>Full-Service Maintenance &amp; Repairs</h4></div>
+          <p>On-site and in-shop servicing including engine tuning, blade sharpening, carburettor cleaning, spark plug and filter replacement, fuel system servicing and electrical diagnostics.</p>
+        </div>
+        <div class="service">
+          <div class="service-item"><h4>Genuine Spare Parts &amp; Consumables</h4></div>
+          <p>Original manufacturer parts and high-quality consumables — blades, belts, air filters, oil, spark plugs and replacement batteries — to extend the life of your equipment.</p>
+        </div>
+        <div class="service">
+          <div class="service-item"><h4>Warranty Plans &amp; Extended Coverage</h4></div>
+        </div>
+        <div class="service">
+          <div class="service-item"><h4>Pre-Sale Advice &amp; Demo</h4></div>
+          <p>Personalised product recommendations and live demos to ensure you pick the right tool for your garden size and workload. We explain running costs and maintenance needs too.</p>
+        </div>
+        <div class="service">
+          <div class="service-item"><h4>Pickup &amp; Delivery</h4></div>
+          <p>Convenient collection and delivery for repairs and purchases across our service area — professional packaging and tracking for larger equipment.</p>
+        </div>
+        <div class="service">
+          <div class="service-item"><h4>Seasonal Tune-ups &amp; Winterisation</h4></div>
+          <p>Prepare equipment for heavy season use or storage: oil changes, fuel system stabilisation, blade treatments and winter storage preparation.</p>
+        </div>
+        <div class="service">
+          <div class="service-item"><h4>Customer Support &amp; Aftercare</h4></div>
+          <p>Helpful phone and email support, spare-part sourcing, maintenance reminders and simple troubleshooting tips to keep you up and running.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel: one product visible at a time, moves right-to-left automatically -->
+    <section class="carousel-wrap">
+      <div class="carousel" id="carousel">
+        <div class="track" id="track">
+          <!-- Slide 1 -->
+          <article class="slide">
+            <figure class="prod-img"><img src="images/product1.jpg" alt="Petrol Lawn Mower" /></figure>
+            <div class="prod-info">
+              <h3>Petrol Lawn Mower — ProCut 450</h3>
+              <p>Robust petrol mower for medium-large gardens. 4-stroke engine, 45cm cutting width, mulching and collection options.</p>
+              <div class="price" data-base="28000">Price: ₹28,000</div>
+              <div class="warranty-toggle">
+                
+              </div>
+            </div>
+          </article><article class="slide">
+            <figure class="prod-img"><img src="images/product2.jpg" alt="Cordless Strimmer" /></figure>
+            <div class="prod-info">
+              <h3>Cordless Strimmer — TrimMaster X</h3>
+              <p>Lightweight, long-run battery system. Adjustable shaft and head for edging and tight spaces.</p>
+              <div class="price" data-base="9500">Price: ₹9,500</div>
+              <div class="warranty-toggle">
+                
+              </div>
+            </div>
+          </article><article class="slide">
+            <figure class="prod-img"><img src="images/product3.jpg" alt="Brushcutter" /></figure>
+            <div class="prod-info">
+              <h3>Brushcutter — RuggedEdge 52</h3>
+              <p>Heavy-duty cutting head for coarse vegetation and overgrown areas. Anti-vibration system for operator comfort.</p>
+              <div class="price" data-base="16000">Price: ₹16,000</div>
+              <div class="warranty-toggle">
+                
+              </div>
+            </div>
+          </article><article class="slide">
+            <figure class="prod-img"><img src="images/product4.jpg" alt="Hedge Trimmer" /></figure>
+            <div class="prod-info">
+              <h3>Hedge Trimmer — CutRight 600</h3>
+              <p>Double-sided blade for neat hedging. Ergonomic handle and safety switch for professional results.</p>
+              <div class="price" data-base="12000">Price: ₹12,000</div>
+              <div class="warranty-toggle">
+                
+              </div>
+            </div>
+          </article><article class="slide">
+            <figure class="prod-img"><img src="images/product5.jpg" alt="Chainsaw" /></figure>
+            <div class="prod-info">
+              <h3>Chainsaw — TimberPro 38</h3>
+              <p>Powerful, balanced chainsaw suitable for pruning and small timber work. Low-kickback chain included.</p>
+              <div class="price" data-base="18500">Price: ₹18,500</div>
+              <div class="warranty-toggle">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="prev" aria-label="Previous">❮</button>
+        <button id="next" aria-label="Next">❯</button>
+      </div>
+      <div class="indicators" id="dots"></div>
+    </section>
+  </div>
+
+  <script>
+    (function(){
+      const track = document.getElementById('track');
+      const slides = Array.from(track.children);
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const dotsWrap = document.getElementById('dots');
+      let index = 0;
+      let autoplayTimer = null;
+
+      // Create dots
+      slides.forEach((s,i)=>{
+        const d = document.createElement('div'); d.className='dot'+(i===0?' active':''); d.dataset.i=i; dotsWrap.appendChild(d);
+      });
+
+      const dots = Array.from(dotsWrap.children);
+
+      function goTo(i){
+        if(i<0) i = slides.length-1;
+        if(i>=slides.length) i = 0;
+        index = i;
+        const x = - index * 100;
+        track.style.transform = `translateX(${x}%)`;
+        dots.forEach(d=>d.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+
+      prevBtn.addEventListener('click', ()=>{ pauseAutoplay(); goTo(index-1); });
+      nextBtn.addEventListener('click', ()=>{ pauseAutoplay(); goTo(index+1); });
+      dots.forEach(d=>d.addEventListener('click', (e)=>{ pauseAutoplay(); goTo(Number(e.target.dataset.i)); }));
+
+      // Warranty toggle logic (updates displayed price)
+      document.querySelectorAll('.warranty-toggle').forEach(group=>{
+        const priceEl = group.parentElement.querySelector('.price');
+        const base = parseFloat(priceEl.dataset.base);
+        group.querySelectorAll('.warranty-btn').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            // toggle styles
+            group.querySelectorAll('.warranty-btn').forEach(b=>{ b.setAttribute('aria-pressed','false'); });
+            btn.setAttribute('aria-pressed','true');
+            const add = parseFloat(btn.dataset.add || 0);
+            priceEl.textContent = 'Price: ₹' + (base + add).toFixed(2);
+          });
+        });
+      });
+
+      // Autoplay right-to-left: advance to next slide (index+1) every 3500ms
+      function startAutoplay(){
+        autoplayTimer = setInterval(()=>{ goTo(index+1); }, 3500);
+      }
+      function pauseAutoplay(){ clearInterval(autoplayTimer); autoplayTimer = null; }
+
+      // Pause on hover
+      const carousel = document.getElementById('carousel');
+      carousel.addEventListener('mouseenter', pauseAutoplay);
+      carousel.addEventListener('mouseleave', ()=>{ if(!autoplayTimer) startAutoplay(); });
+
+      // init
+      goTo(0);
+      startAutoplay();
+
+      // Accessibility: allow arrow keys
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft') { pauseAutoplay(); goTo(index-1); }
+        if(e.key === 'ArrowRight') { pauseAutoplay(); goTo(index+1); }
+      });
+    })();
+  </script>
+</body>
+</html>

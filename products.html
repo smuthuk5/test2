@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Products — Pulse Service Masters</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .product-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        background: #fff;
+        padding: 1rem;
+      }
+
+```
+  .product-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .product-card h3 {
+    margin-top: 0.75rem;
+  }
+
+  .product-card .price-box {
+    pointer-events: none;
+    margin-top: 0.5rem;
+  }
+
+  .product-card .price-box button {
+    pointer-events: auto;
+    padding: 0.5rem 1rem;
+    background: #008c4a;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .product-card .price-box button:hover {
+    background: #00a853;
+  }
+
+  .price-display {
+    display: none;
+    margin-top: 0.5rem;
+    color: #333;
+    font-weight: bold;
+    background: #f8f8f8;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+
+  .price-display.show {
+    display: block;
+  }
+
+  .price-line {
+    margin: 0.25rem 0;
+  }
+</style>
+```
+
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="index.html">
+        <picture><source srcset="images/logo.webp" type="image/webp"><img src="images/logo.png" alt="Logo" class="logo" /></picture>
+      </a>
+      <h1>Our Products</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+```
+<main>
+  <section class="product-grid">
+
+    <a href="product-brushcutter.html" class="product-card" data-base="16000">
+      <picture><source srcset="images/Brush_Cutter_-_4_stroke.webp" type="image/webp"><img src="images/Brush_Cutter_-_4_stroke.jpg" alt="Brush Cutter - 4 stroke" /></picture>
+      <h3>Brush Cutter - 4 stroke</h3>
+      <p>Powerful 4-stroke brush cutter for efficient grass cutting and light farming.</p>
+      <div class="price-box">
+        <button class="toggle">Show Price</button>
+        <div class="price-display" data-base="16000">
+          <p class="price-line without">Without Warranty: ₹<span class="without-price">16,000</span></p>
+          <p class="price-line with">With Warranty: ₹<span class="with-price">22,400</span></p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="product-brushcutter-2stroke.html" class="product-card" data-base="16000">
+      <picture><source srcset="images/Brush_Cutter_-_2_stroke.webp" type="image/webp"><img src="images/Brush_Cutter_-_2_stroke.jpg" alt="Brush Cutter - 2 stroke" /></picture>
+      <h3>Brush Cutter - 2 stroke</h3>
+      <p>High-power 2-stroke brush cutter for heavy vegetation and thick weeds.</p>
+      <div class="price-box">
+        <button class="toggle">Show Price</button>
+        <div class="price-display" data-base="16000">
+          <p class="price-line without">Without Warranty: ₹<span class="without-price">16,000</span></p>
+          <p class="price-line with">With Warranty: ₹<span class="with-price">22,400</span></p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="product-hedge-trimmer.html" class="product-card" data-base="16000">
+      <picture><source srcset="images/Hedge_Trimmer_-_PSM_HT.webp" type="image/webp"><img src="images/Hedge_Trimmer_-_PSM_HT.jpg" alt="Hedge Trimmer - PSM HT" /></picture>
+      <h3>Hedge Trimmer - PSM HT</h3>
+      <p>Compact and powerful hedge trimmer delivering clean, even cuts on thick hedges.</p>
+      <div class="price-box">
+        <button class="toggle">Show Price</button>
+        <div class="price-display" data-base="16000">
+          <p class="price-line without">Without Warranty: ₹<span class="without-price">16,000</span></p>
+          <p class="price-line with">With Warranty: ₹<span class="with-price">22,400</span></p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="product-chainsaw.html" class="product-card" data-base="16000">
+      <picture><source srcset="images/Chainsaw_-_PSM-Kawasaqi.webp" type="image/webp"><img src="images/Chainsaw_-_PSM-Kawasaqi.jpg" alt="Chainsaw - PSM-Kawasaqi" /></picture>
+      <h3>Chainsaw - PSM-Kawasaqi</h3>
+      <p>High-torque chainsaw for logs, branches, and small trees.</p>
+      <div class="price-box">
+        <button class="toggle">Show Price</button>
+        <div class="price-display" data-base="16000">
+          <p class="price-line without">Without Warranty: ₹<span class="without-price">16,000</span></p>
+          <p class="price-line with">With Warranty: ₹<span class="with-price">22,400</span></p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="product-tiller.html" class="product-card" data-base="16000">
+      <picture><source srcset="images/Tiller_-_PSM_PPT.webp" type="image/webp"><img src="images/Tiller_-_PSM_PPT.jpg" alt="Tiller - PSM PPT" /></picture>
+      <h3>Tiller - PSM PPT</h3>
+      <p>Robust tiller perfect for soil preparation, weeding and seedbed prep.</p>
+      <div class="price-box">
+        <button class="toggle">Show Price</button>
+        <div class="price-display" data-base="16000">
+          <p class="price-line without">Without Warranty: ₹<span class="without-price">16,000</span></p>
+          <p class="price-line with">With Warranty: ₹<span class="with-price">22,400</span></p>
+        </div>
+      </div>
+    </a>
+    
+</section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Pulse Service Masters</p>
+</footer>
+
+<script>
+  // Toggle visibility of price section
+  document.querySelectorAll(".toggle").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const display = button.nextElementSibling;
+      display.classList.toggle("show");
+      button.textContent = display.classList.contains("show")
+        ? "Hide Price"
+        : "Show Price";
+    });
+  });
+</script>
+```
+
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // populate computed prices (with warranty = base + 40%)
+  document.querySelectorAll('.product-card').forEach(card => {
+    const base = parseInt(card.getAttribute('data-base') || card.querySelector('.price-display')?.dataset.base || 0, 10);
+    const withoutEl = card.querySelector('.without-price');
+    const withEl = card.querySelector('.with-price');
+    if (!isNaN(base)) {
+      const withPrice = Math.round(base * 1.4);
+      if (withoutEl) withoutEl.textContent = base.toLocaleString('en-IN');
+      if (withEl) withEl.textContent = withPrice.toLocaleString('en-IN');
+    }
+  });
+
+  // toggle handler: show/hide price-display but allow navigation when clicking outside the button
+  document.querySelectorAll('.product-card .toggle').forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const display = btn.nextElementSibling;
+      display.classList.toggle('show');
+      btn.textContent = display.classList.contains('show') ? 'Hide Price' : 'Show Price';
+    });
+  });
+
+});
+</script>
+
+
+<!-- PRODUCTS PAGE SCRIPTS -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // populate prices from data-base
+  document.querySelectorAll('.product-card').forEach(function(card){
+    const base = parseInt(card.getAttribute('data-base') || card.querySelector('.price-display')?.dataset.base || 0, 10);
+    const withoutEl = card.querySelector('.without-price');
+    const withEl = card.querySelector('.with-price');
+    if(!isNaN(base) && withoutEl && withEl){
+      const withPrice = Math.round(base * 1.4);
+      withoutEl.textContent = base.toLocaleString('en-IN');
+      withEl.textContent = withPrice.toLocaleString('en-IN');
+    }
+  });
+  // toggle show/hide prices, stop propagation only on the button
+  document.querySelectorAll('.product-card .toggle').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      const display = btn.nextElementSibling;
+      if(display){
+        display.classList.toggle('show');
+        btn.textContent = display.classList.contains('show') ? 'Hide Price' : 'Show Price';
+      }
+    });
+  });
+  // allow clicking card (not the button) to follow the link (no extra code needed if anchor wraps card)
+});
+</script>
+<!-- END PRODUCTS PAGE SCRIPTS -->
+
+</body>
+</html>
